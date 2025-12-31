@@ -154,3 +154,100 @@ async function checkHueBridge(ip: string, timeout = 3000): Promise<HueBridge | n
   return null;
 }
 
+export async function authenticateBridgeAction(
+  bridgeIp: string, 
+  appName = "hue-light-show-creator"
+): Promise<string | null> {
+  const MAX_RETRIES = 30; // 30 seconds
+  const RETRY_DELAY = 1000;
+
+  for (let i = 0; i < MAX_RETRIES; i++) {
+    try {
+      const response = await fetch(`http://${bridgeIp}/api`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ devicetype: appName }),
+        cache: 'no-store'
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data[0]?.success?.username) {
+        return data[0].success.username;
+      }
+      
+      if (data[0]?.error?.type === 101) {
+        // Link button not pressed, wait and retry
+        await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+        continue;
+      }
+      
+      if (data[0]?.error) {
+        throw new Error(data[0].error.description);
+      }
+    } catch (e: any) {
+      console.error("Auth attempt failed", e);
+      if (i === MAX_RETRIES - 1) {
+        throw new Error(e.message || "Authentication failed. Please make sure you pressed the button on the bridge.");
+      }
+      await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+    }
+  }
+  return null;
+}
+
+export async function getLightsAction(
+  bridgeIp: string, 
+  username: string
+): Promise<any[]> {
+  try {
+    const response = await fetch(`http://${bridgeIp}/api/${username}/lights`, {
+      cache: 'no-store'
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    return Object.entries(data).map(([id, light]: [string, any]) => ({
+      id,
+      ...light,
+    }));
+  } catch (e: any) {
+    console.error("Failed to get lights", e);
+    throw new Error(e.message || "Failed to fetch lights");
+  }
+}
+
+export async function setLightStateAction(
+  bridgeIp: string,
+  username: string,
+  lightId: string,
+  state: Record<string, any>
+): Promise<void> {
+  try {
+    const response = await fetch(`http://${bridgeIp}/api/${username}/lights/${lightId}/state`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(state),
+      cache: 'no-store'
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  } catch (e: any) {
+    console.error("Failed to set light state", e);
+    throw new Error(e.message || "Failed to set light state");
+  }
+}
+
