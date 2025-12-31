@@ -845,64 +845,62 @@ export function Timeline() {
                 style={{
                   height: `${Math.max(
                     200,
-                    Math.min(800, getTotalTracksHeight(tracks))
+                    Math.min(800, getTotalTracksHeight(tracks) + getGhostTracksHeight(tracks))
                   )}px`,
                   width: `${dynamicTimelineWidth}px`,
                 }}
               >
-                {tracks.length === 0 ? (
-                  <TimelineEmptyState />
-                ) : (
-                  <>
-                    {tracks.map((track, index) => (
-                      <ContextMenu key={track.id}>
-                        <ContextMenuTrigger asChild>
-                          <div
-                            className="absolute left-0 right-0"
-                            style={{
-                              top: `${getCumulativeHeightBefore(
-                                tracks,
-                                index
-                              )}px`,
-                              height: `${getTrackHeight(track.type)}px`,
-                            }}
-                            onClick={(e) => {
-                              // If clicking empty area (not on a element), deselect all elements
-                              if (
-                                !(e.target as HTMLElement).closest(
-                                  ".timeline-element"
-                                )
-                              ) {
-                                clearSelectedElements();
-                              }
-                            }}
-                          >
-                            <TimelineTrackContent
-                              track={track}
-                              zoomLevel={zoomLevel}
-                              onSnapPointChange={handleSnapPointChange}
-                              rulerScrollRef={rulerScrollRef}
-                              tracksScrollRef={tracksScrollRef}
-                            />
-                          </div>
-                        </ContextMenuTrigger>
-                        <ContextMenuContent className="z-200">
-                          <ContextMenuItem
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleTrackMute(track.id);
-                            }}
-                          >
-                            {track.muted ? "Unmute Track" : "Mute Track"}
-                          </ContextMenuItem>
-                          <ContextMenuItem onClick={(e) => e.stopPropagation()}>
-                            Track settings (soon)
-                          </ContextMenuItem>
-                        </ContextMenuContent>
-                      </ContextMenu>
-                    ))}
-                  </>
-                )}
+                {/* Render existing tracks */}
+                {tracks.map((track, index) => (
+                  <ContextMenu key={track.id}>
+                    <ContextMenuTrigger asChild>
+                      <div
+                        className="absolute left-0 right-0"
+                        style={{
+                          top: `${getCumulativeHeightBefore(
+                            tracks,
+                            index
+                          )}px`,
+                          height: `${getTrackHeight(track.type)}px`,
+                        }}
+                        onClick={(e) => {
+                          // If clicking empty area (not on a element), deselect all elements
+                          if (
+                            !(e.target as HTMLElement).closest(
+                              ".timeline-element"
+                            )
+                          ) {
+                            clearSelectedElements();
+                          }
+                        }}
+                      >
+                        <TimelineTrackContent
+                          track={track}
+                          zoomLevel={zoomLevel}
+                          onSnapPointChange={handleSnapPointChange}
+                          rulerScrollRef={rulerScrollRef}
+                          tracksScrollRef={tracksScrollRef}
+                        />
+                      </div>
+                    </ContextMenuTrigger>
+                    <ContextMenuContent className="z-200">
+                      <ContextMenuItem
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleTrackMute(track.id);
+                        }}
+                      >
+                        {track.muted ? "Unmute Track" : "Mute Track"}
+                      </ContextMenuItem>
+                      <ContextMenuItem onClick={(e) => e.stopPropagation()}>
+                        Track settings (soon)
+                      </ContextMenuItem>
+                    </ContextMenuContent>
+                  </ContextMenu>
+                ))}
+                
+                {/* Ghost placeholder for light track when no light track exists */}
+                <GhostTrackPlaceholders tracks={tracks} />
               </div>
             </ScrollArea>
           </div>
@@ -912,64 +910,73 @@ export function Timeline() {
   );
 }
 
-function TimelineEmptyState() {
-  // Ghost placeholder tracks showing where users can drag elements
-  const ghostTracks = [
-    {
-      type: "text" as const,
-      label: "Drop text here",
-      icon: TypeIcon,
-      color: "border-[#5DBAA0]/40",
-      bgHover: "hover:bg-[#5DBAA0]/5",
-    },
-    {
-      type: "media" as const,
-      label: "Drop media here",
-      icon: Video,
-      color: "border-blue-500/40",
-      bgHover: "hover:bg-blue-500/5",
-    },
-    {
-      type: "audio" as const,
-      label: "Drop audio here",
-      icon: Music,
-      color: "border-purple-500/40",
-      bgHover: "hover:bg-purple-500/5",
-    },
+// Calculate height needed for ghost track placeholders
+function getGhostTracksHeight(tracks: TimelineTrack[]): number {
+  const existingTypes = new Set(tracks.map((t) => t.type));
+  let height = 0;
+  
+  // Add height for light track if it doesn't exist
+  if (!existingTypes.has("light")) {
+    height += getTrackHeight("light") + 8; // track height + gap + margin
+  }
+  
+  return height;
+}
+
+function GhostTrackPlaceholders({ tracks }: { tracks: TimelineTrack[] }) {
+  // Define ghost track types that should show when missing
+  const ghostTrackDefinitions = [
     {
       type: "light" as const,
       label: "Drop lights here",
       icon: Lightbulb,
-      color: "border-yellow-500/40",
-      bgHover: "hover:bg-yellow-500/5",
+      color: "border-yellow-500/30",
+      bgColor: "bg-yellow-500/5",
     },
   ];
 
+  // Filter to only show ghosts for track types that don't exist
+  const existingTypes = new Set(tracks.map((t) => t.type));
+  const missingGhosts = ghostTrackDefinitions.filter(
+    (ghost) => !existingTypes.has(ghost.type)
+  );
+
+  if (missingGhosts.length === 0) return null;
+
+  // Calculate the top position (below all existing tracks)
+  const topOffset = getTotalTracksHeight(tracks) + (tracks.length > 0 ? 4 : 0); // 4px gap
+
   return (
-    <div className="flex flex-col gap-1 p-2 w-full">
-      {ghostTracks.map((ghost, index) => {
+    <>
+      {missingGhosts.map((ghost, index) => {
         const Icon = ghost.icon;
         const height = getTrackHeight(ghost.type);
+        const previousGhostsHeight = missingGhosts
+          .slice(0, index)
+          .reduce((sum, g) => sum + getTrackHeight(g.type) + 4, 0);
 
         return (
           <div
             key={ghost.type}
             className={`
-              w-full rounded-md border-2 border-dashed transition-all duration-200
-              flex items-center gap-3 px-4
-              ${ghost.color} ${ghost.bgHover}
-              opacity-60 hover:opacity-100
+              absolute left-0 right-0 mx-2 rounded-md border-2 border-dashed
+              flex items-center gap-3 px-4 transition-all duration-200
+              ${ghost.color} ${ghost.bgColor}
+              opacity-50 hover:opacity-80
             `}
-            style={{ height: `${height}px` }}
+            style={{
+              top: `${topOffset + previousGhostsHeight}px`,
+              height: `${height}px`,
+            }}
           >
-            <Icon className="w-4 h-4 text-muted-foreground/60" />
-            <span className="text-xs text-muted-foreground/60 select-none">
+            <Icon className="w-4 h-4 text-muted-foreground/50" />
+            <span className="text-xs text-muted-foreground/50 select-none">
               {ghost.label}
             </span>
           </div>
         );
       })}
-    </div>
+    </>
   );
 }
 
