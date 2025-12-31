@@ -25,7 +25,7 @@ export const baseMetaData: Metadata = {
     card: "summary_large_image",
     title: SITE_INFO.title,
     description: SITE_INFO.description,
-    creator: "@opencutapp",
+    creator: "@huelightshow",
     images: [SITE_INFO.twitterImage],
   },
   pinterest: {

@@ -163,6 +163,18 @@ export function TimelineElement({
       );
     }
 
+    if (element.type === "light") {
+        return (
+            <div className="w-full h-full flex items-center justify-start pl-2 gap-2" style={{ backgroundColor: '#1e1e1e' }}>
+                <div 
+                    className="w-4 h-4 rounded-full border border-white/20" 
+                    style={{ backgroundColor: element.color || '#fbbf24' }} 
+                />
+                <span className="text-xs text-white truncate">{element.name}</span>
+            </div>
+        )
+    }
+
     const mediaItem = mediaFiles.find((file) => file.id === element.mediaId);
     if (!mediaItem) {
       return (

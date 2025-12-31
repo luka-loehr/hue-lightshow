@@ -552,12 +552,32 @@ export function TimelineTrackContent({
                   existingElement.trimEnd);
               return snappedTime < existingEnd && newElementEnd > existingStart;
             });
-          } else {
-            // Media elements
-            const mediaItem = mediaFiles.find(
-              (item) => item.id === dragData.id
-            );
-            if (mediaItem) {
+            } else if (dragData.type === "light") {
+              // Light elements
+              const newElementDuration = 5; // Default duration
+              const snappedTime = getDropSnappedTime(
+                dropTime,
+                newElementDuration
+              );
+              const newElementEnd = snappedTime + newElementDuration;
+
+              wouldOverlap = track.elements.some((existingElement) => {
+                const existingStart = existingElement.startTime;
+                const existingEnd =
+                  existingElement.startTime +
+                  (existingElement.duration -
+                    existingElement.trimStart -
+                    existingElement.trimEnd);
+                return (
+                  snappedTime < existingEnd && newElementEnd > existingStart
+                );
+              });
+            } else {
+              // Media elements
+              const mediaItem = mediaFiles.find(
+                (item) => item.id === dragData.id
+              );
+              if (mediaItem) {
               const newElementDuration = mediaItem.duration || 5;
               const snappedTime = getDropSnappedTime(
                 dropTime,

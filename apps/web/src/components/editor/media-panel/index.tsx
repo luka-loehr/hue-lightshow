@@ -1,7 +1,7 @@
 "use client";
 
 import { TabBar } from "./tabbar";
-import { MediaView } from "./views/media";
+import { LightsView } from "./views/lights";
 import { useMediaPanelStore, Tab } from "./store";
 import { TextView } from "./views/text";
 import { SoundsView } from "./views/sounds";
@@ -14,7 +14,7 @@ export function MediaPanel() {
   const { activeTab } = useMediaPanelStore();
 
   const viewMap: Record<Tab, React.ReactNode> = {
-    media: <MediaView />,
+    lights: <LightsView />,
     sounds: <SoundsView />,
     text: <TextView />,
     stickers: <StickersView />,

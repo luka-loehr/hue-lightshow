@@ -1,0 +1,588 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.HueLightShowCreator-arm64-apple-macosx26.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/sources",
+      "importPath" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/AudioTrackView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/ColorExtensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/HueBridge.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/HueBridgeService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/HueLight.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/HueLightShowCreatorApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LibraryView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LightEvent.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LightPropertiesView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LightShowPlayer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LightShowProject.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/ProjectManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/SettingsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/TimelineCanvas.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/TimelineContainer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/TimelineHelpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/TimelineView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "HueLightShowCreator",
+      "moduleOutputPath" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/Modules/HueLightShowCreator.swiftmodule",
+      "objects" : [
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/AudioTrackView.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/ColorExtensions.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/ContentView.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueBridge.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueBridgeService.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueLight.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueLightShowCreatorApp.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LibraryView.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightEvent.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightPropertiesView.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightShowPlayer.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightShowProject.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/ProjectManager.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/SettingsView.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineCanvas.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineContainer.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineHelpers.swift.o",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineView.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j10",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "HueLightShowCreator_main",
+        "-color-diagnostics",
+        "-swift-version",
+        "5",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "hue"
+      ],
+      "outputFileMapPath" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/AudioTrackView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/ColorExtensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueBridge.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueBridgeService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueLight.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueLightShowCreatorApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LibraryView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightEvent.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightPropertiesView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightShowPlayer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightShowProject.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/ProjectManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/SettingsView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineCanvas.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineContainer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineHelpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/Modules/HueLightShowCreator.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/luka/Documents/hue/Sources/AudioTrackView.swift",
+        "/Users/luka/Documents/hue/Sources/ColorExtensions.swift",
+        "/Users/luka/Documents/hue/Sources/ContentView.swift",
+        "/Users/luka/Documents/hue/Sources/HueBridge.swift",
+        "/Users/luka/Documents/hue/Sources/HueBridgeService.swift",
+        "/Users/luka/Documents/hue/Sources/HueLight.swift",
+        "/Users/luka/Documents/hue/Sources/HueLightShowCreatorApp.swift",
+        "/Users/luka/Documents/hue/Sources/LibraryView.swift",
+        "/Users/luka/Documents/hue/Sources/LightEvent.swift",
+        "/Users/luka/Documents/hue/Sources/LightPropertiesView.swift",
+        "/Users/luka/Documents/hue/Sources/LightShowPlayer.swift",
+        "/Users/luka/Documents/hue/Sources/LightShowProject.swift",
+        "/Users/luka/Documents/hue/Sources/ProjectManager.swift",
+        "/Users/luka/Documents/hue/Sources/SettingsView.swift",
+        "/Users/luka/Documents/hue/Sources/TimelineCanvas.swift",
+        "/Users/luka/Documents/hue/Sources/TimelineContainer.swift",
+        "/Users/luka/Documents/hue/Sources/TimelineHelpers.swift",
+        "/Users/luka/Documents/hue/Sources/TimelineView.swift"
+      ],
+      "tempsPath" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "HueLightShowCreator" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "HueLightShowCreator",
+      "-package-name",
+      "hue",
+      "-c",
+      "/Users/luka/Documents/hue/Sources/AudioTrackView.swift",
+      "/Users/luka/Documents/hue/Sources/ColorExtensions.swift",
+      "/Users/luka/Documents/hue/Sources/ContentView.swift",
+      "/Users/luka/Documents/hue/Sources/HueBridge.swift",
+      "/Users/luka/Documents/hue/Sources/HueBridgeService.swift",
+      "/Users/luka/Documents/hue/Sources/HueLight.swift",
+      "/Users/luka/Documents/hue/Sources/HueLightShowCreatorApp.swift",
+      "/Users/luka/Documents/hue/Sources/LibraryView.swift",
+      "/Users/luka/Documents/hue/Sources/LightEvent.swift",
+      "/Users/luka/Documents/hue/Sources/LightPropertiesView.swift",
+      "/Users/luka/Documents/hue/Sources/LightShowPlayer.swift",
+      "/Users/luka/Documents/hue/Sources/LightShowProject.swift",
+      "/Users/luka/Documents/hue/Sources/ProjectManager.swift",
+      "/Users/luka/Documents/hue/Sources/SettingsView.swift",
+      "/Users/luka/Documents/hue/Sources/TimelineCanvas.swift",
+      "/Users/luka/Documents/hue/Sources/TimelineContainer.swift",
+      "/Users/luka/Documents/hue/Sources/TimelineHelpers.swift",
+      "/Users/luka/Documents/hue/Sources/TimelineView.swift",
+      "-I",
+      "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j10",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "HueLightShowCreator_main",
+      "-color-diagnostics",
+      "-swift-version",
+      "5",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "hue",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "HueLightShowCreator" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator-entitlement.plist"
+    },
+    "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/AudioTrackView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/ColorExtensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/ContentView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/HueBridge.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/HueBridgeService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/HueLight.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/HueLightShowCreatorApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LibraryView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LightEvent.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LightPropertiesView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LightShowPlayer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/LightShowProject.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/ProjectManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/SettingsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/TimelineCanvas.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/TimelineContainer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/TimelineHelpers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/Sources/TimelineView.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/sources"
+    },
+    "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/AudioTrackView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/ColorExtensions.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/ContentView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueBridge.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueBridgeService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueLight.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/HueLightShowCreatorApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LibraryView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightEvent.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightPropertiesView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightShowPlayer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/LightShowProject.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/ProjectManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/SettingsView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineCanvas.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineContainer.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineHelpers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.build/TimelineView.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/HueLightShowCreator.product/Objects.LinkFileList"
+    },
+    "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/luka/Documents/hue/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

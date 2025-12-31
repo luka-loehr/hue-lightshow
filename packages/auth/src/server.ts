@@ -1,6 +1,7 @@
 import { betterAuth, RateLimit } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { db } from "@opencut/db";
+import { db } from "@hue-lightshow/db";
+import { schema } from "@hue-lightshow/db/schema";
 import { keys } from "./keys";
 import { Redis } from "@upstash/redis";
 

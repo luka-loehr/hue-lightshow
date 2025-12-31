@@ -1,7 +1,7 @@
 import { MediaType } from "@/types/media";
 import { generateUUID } from "@/lib/utils";
 
-export type TrackType = "media" | "text" | "audio";
+export type TrackType = "media" | "text" | "audio" | "light";
 
 // Base element properties
 interface BaseTimelineElement {
@@ -39,13 +39,22 @@ export interface TextElement extends BaseTimelineElement {
   opacity: number; // 0-1
 }
 
+// Light element for controlling Hue lights
+export interface LightElement extends BaseTimelineElement {
+  type: "light";
+  color: string;
+  brightness: number; // 0-254
+  lightId: string;
+}
+
 // Typed timeline elements
-export type TimelineElement = MediaElement | TextElement;
+export type TimelineElement = MediaElement | TextElement | LightElement;
 
 // Creation types (without id, for addElementToTrack)
 export type CreateMediaElement = Omit<MediaElement, "id">;
 export type CreateTextElement = Omit<TextElement, "id">;
-export type CreateTimelineElement = CreateMediaElement | CreateTextElement;
+export type CreateLightElement = Omit<LightElement, "id">;
+export type CreateTimelineElement = CreateMediaElement | CreateTextElement | CreateLightElement;
 
 export interface TimelineElementProps {
   element: TimelineElement;
@@ -78,7 +87,15 @@ export interface TextItemDragData {
   content: string;
 }
 
-export type DragData = MediaItemDragData | TextItemDragData;
+export interface LightItemDragData {
+  id: string; // light id
+  type: "light";
+  name: string;
+  color: string;
+  brightness: number;
+}
+
+export type DragData = MediaItemDragData | TextItemDragData | LightItemDragData;
 
 export interface TimelineTrack {
   id: string;
@@ -98,6 +115,10 @@ export function sortTracksByOrder(tracks: TimelineTrack[]): TimelineTrack[] {
     // Audio tracks always go to bottom
     if (a.type === "audio" && b.type !== "audio") return 1;
     if (b.type === "audio" && a.type !== "audio") return -1;
+
+    // Light tracks go to bottom, below audio
+    if (a.type === "light" && b.type !== "light") return 1;
+    if (b.type === "light" && a.type !== "light") return -1;
 
     // Main track goes above audio but below text tracks
     if (a.isMain && !b.isMain && b.type !== "audio" && b.type !== "text")
@@ -135,7 +156,7 @@ export function ensureMainTrack(tracks: TimelineTrack[]): TimelineTrack[] {
 
 // Timeline validation utilities
 export function canElementGoOnTrack(
-  elementType: "text" | "media",
+  elementType: "text" | "media" | "light",
   trackType: TrackType
 ): boolean {
   if (elementType === "text") {
@@ -144,11 +165,14 @@ export function canElementGoOnTrack(
   if (elementType === "media") {
     return trackType === "media" || trackType === "audio";
   }
+  if (elementType === "light") {
+    return trackType === "light";
+  }
   return false;
 }
 
 export function validateElementTrackCompatibility(
-  element: { type: "text" | "media" },
+  element: { type: "text" | "media" | "light" },
   track: { type: TrackType }
 ): { isValid: boolean; errorMessage?: string } {
   const isValid = canElementGoOnTrack(element.type, track.type);
@@ -157,7 +181,9 @@ export function validateElementTrackCompatibility(
     const errorMessage =
       element.type === "text"
         ? "Text elements can only be placed on text tracks"
-        : "Media elements can only be placed on media or audio tracks";
+        : element.type === "light"
+          ? "Light elements can only be placed on light tracks"
+          : "Media elements can only be placed on media or audio tracks";
 
     return { isValid: false, errorMessage };
   }

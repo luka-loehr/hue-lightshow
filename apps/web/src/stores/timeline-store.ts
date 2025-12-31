@@ -383,7 +383,9 @@ export const useTimelineStore = create<TimelineStore>((set, get) => {
             ? "Text Track"
             : type === "audio"
               ? "Audio Track"
-              : "Track";
+              : type === "light"
+                ? "Light Track"
+                : "Track";
 
       const newTrack: TimelineTrack = {
         id: generateUUID(),
@@ -407,7 +409,9 @@ export const useTimelineStore = create<TimelineStore>((set, get) => {
             ? "Text Track"
             : type === "audio"
               ? "Audio Track"
-              : "Track";
+              : type === "light"
+                ? "Light Track"
+                : "Track";
 
       const newTrack: TimelineTrack = {
         id: generateUUID(),

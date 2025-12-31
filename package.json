@@ -1,9 +1,10 @@
 {
-  "name": "opencut",
-  "packageManager": "bun@1.2.18",
+  "packageManager": "npm@11.6.2",
+  "name": "hue-lightshow",
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
     "husky": "^9.1.7",
+    "tsx": "^4.21.0",
     "turbo": "^2.5.4",
     "typescript": "5.8.3",
     "ultracite": "5.0.48"
@@ -17,7 +18,8 @@
     "build": "turbo run build",
     "check-types": "turbo run check-types",
     "lint": "npx ultracite@latest lint",
-    "format": "npx ultracite@latest format"
+    "format": "npx ultracite@latest format",
+    "test:hue-discovery": "npx tsx test-hue-discovery.ts"
   },
   "dependencies": {
     "mediabunny": "^1.9.3",

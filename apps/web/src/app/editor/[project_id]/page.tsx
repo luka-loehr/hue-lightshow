@@ -17,6 +17,7 @@ import { useProjectStore } from "@/stores/project-store";
 import { EditorProvider } from "@/components/providers/editor-provider";
 import { usePlaybackControls } from "@/hooks/use-playback-controls";
 import { Onboarding } from "@/components/editor/onboarding";
+import { useLightingEngine } from "@/hooks/use-lighting-engine";
 
 export default function Editor() {
   const {
@@ -48,6 +49,7 @@ export default function Editor() {
   const isInitializingRef = useRef<boolean>(false);
 
   usePlaybackControls();
+  useLightingEngine();
 
   useEffect(() => {
     let isCancelled = false;

@@ -42,7 +42,7 @@ export default function RootLayout({
             </StorageProvider>
             <Analytics />
             <Toaster />
-            <Script
+            {/* <Script
               src="https://cdn.databuddy.cc/databuddy.js"
               strategy="afterInteractive"
               async
@@ -53,7 +53,7 @@ export default function RootLayout({
               data-track-outgoing-links={false}
               data-track-web-vitals={false}
               data-track-sessions={false}
-            />
+            /> */}
           </TooltipProvider>
         </ThemeProvider>
       </body>

@@ -1,11 +1,12 @@
 <table width="100%">
   <tr>
     <td align="left" width="120">
-      <img src="apps/web/public/logo.png" alt="OpenCut Logo" width="100" />
+      <img src="apps/web/public/logo.png" alt="Hue Lightshow Logo" width="100" />
     </td>
     <td align="right">
-      <h1>OpenCut</span></h1>
-      <h3 style="margin-top: -10px;">A free, open-source video editor for web, desktop, and mobile.</h3>
+      <h1>Hue Lightshow</span></h1>
+      <h3 style="margin-top: -10px;">A synchronized light show creator for Philips Hue.</h3>
+      <p><em>Based on the <a href="https://github.com/OpenCut-app/OpenCut">OpenCut</a> video editor.</em></p>
     </td>
   </tr>
 </table>
@@ -22,8 +23,8 @@
 - Multi-track support
 - Real-time preview
 - No watermarks or subscriptions
-- Analytics provided by [Databuddy](https://www.databuddy.cc?utm_source=opencut), 100% Anonymized & Non-invasive.
-- Blog powered by [Marble](https://marblecms.com?utm_source=opencut), Headless CMS.
+- Analytics provided by [Databuddy](https://www.databuddy.cc?utm_source=hue-lightshow), 100% Anonymized & Non-invasive.
+- Blog powered by [Marble](https://marblecms.com?utm_source=hue-lightshow), Headless CMS.
 
 ## Project Structure
 
@@ -104,7 +105,7 @@ Before you begin, ensure you have the following installed on your system:
 
    ```bash
    # Database (matches docker-compose.yaml)
-   DATABASE_URL="postgresql://opencut:opencutthegoat@localhost:5432/opencut"
+   DATABASE_URL="postgresql://huelightshow:huelightshowthegoat@localhost:5432/huelightshow"
 
    # Generate a secure secret for Better Auth
    BETTER_AUTH_SECRET="your-generated-secret-here"
@@ -166,7 +167,7 @@ See our [Contributing Guide](.github/CONTRIBUTING.md) for detailed setup instruc
 
 ---
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FOpenCut-app%2FOpenCut&project-name=opencut&repository-name=opencut)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FOpenCut-app%2FOpenCut&project-name=hue-lightshow&repository-name=hue-lightshow)
 
 ## License
 
@@ -174,4 +175,4 @@ See our [Contributing Guide](.github/CONTRIBUTING.md) for detailed setup instruc
 
 ---
 
-![Star History Chart](https://api.star-history.com/svg?repos=opencut-app/opencut&type=Date)
+![Star History Chart](https://api.star-history.com/svg?repos=OpenCut-app/OpenCut&type=Date)

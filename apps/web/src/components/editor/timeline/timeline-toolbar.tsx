@@ -9,6 +9,12 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import {
   Pause,
@@ -27,6 +33,7 @@ import {
   SplitSquareHorizontal,
   Scissors,
   LayersIcon,
+  Plus,
 } from "lucide-react";
 import {
   SplitButton,
@@ -247,6 +254,28 @@ export function TimelineToolbar({
               </Tooltip>
             </>
           )}
+          <div className="w-px h-6 bg-border mx-1" />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="text" size="icon">
+                <Plus className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem onClick={() => addTrack("media")}>
+                Add Media Track
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => addTrack("audio")}>
+                Add Audio Track
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => addTrack("text")}>
+                Add Text Track
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => addTrack("light")}>
+                Add Light Track
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <div className="w-px h-6 bg-border mx-1" />
           <Tooltip>
             <TooltipTrigger asChild>

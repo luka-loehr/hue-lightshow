@@ -1,7 +1,7 @@
 {
-  "name": "@opencut/auth",
+  "name": "@hue-lightshow/auth",
   "version": "0.0.0",
-  "description": "Authentication package for OpenCut",
+  "description": "Authentication package for Hue Lightshow",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "exports": {
@@ -11,9 +11,10 @@
     "./keys": "./src/keys.ts"
   },
   "dependencies": {
-    "@opencut/db": "workspace:*",
+    "@hue-lightshow/db": "*",
     "@t3-oss/env-nextjs": "^0.13.8",
     "better-auth": "^1.1.1",
+    "@upstash/redis": "^1.35.0",
     "zod": "^4.0.5"
   },
   "devDependencies": {

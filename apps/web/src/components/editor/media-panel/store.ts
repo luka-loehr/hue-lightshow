@@ -4,7 +4,7 @@ import {
   SparklesIcon,
   StickerIcon,
   MusicIcon,
-  VideoIcon,
+  LightbulbIcon,
   BlendIcon,
   SlidersHorizontalIcon,
   LucideIcon,
@@ -14,7 +14,7 @@ import {
 import { create } from "zustand";
 
 export type Tab =
-  | "media"
+  | "lights"
   | "sounds"
   | "text"
   | "stickers"
@@ -26,9 +26,9 @@ export type Tab =
   | "settings";
 
 export const tabs: { [key in Tab]: { icon: LucideIcon; label: string } } = {
-  media: {
-    icon: VideoIcon,
-    label: "Media",
+  lights: {
+    icon: LightbulbIcon,
+    label: "Lights",
   },
   sounds: {
     icon: MusicIcon,
@@ -77,10 +77,10 @@ interface MediaPanelStore {
 }
 
 export const useMediaPanelStore = create<MediaPanelStore>((set) => ({
-  activeTab: "media",
+  activeTab: "lights",
   setActiveTab: (tab) => set({ activeTab: tab }),
   highlightMediaId: null,
   requestRevealMedia: (mediaId) =>
-    set({ activeTab: "media", highlightMediaId: mediaId }),
+    set({ activeTab: "lights", highlightMediaId: mediaId }),
   clearHighlight: () => set({ highlightMediaId: null }),
 }));

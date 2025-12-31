@@ -1,6 +1,7 @@
+
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn } from "@opencut/auth/client";
+import { signIn } from "@hue-lightshow/auth/client";
 
 export function useLogin() {
   const router = useRouter();

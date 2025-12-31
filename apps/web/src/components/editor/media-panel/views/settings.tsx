@@ -27,7 +27,10 @@ import { PipetteIcon, PlusIcon } from "lucide-react";
 import { useMemo, memo, useCallback } from "react";
 import { syntaxUIGradients } from "@/data/colors/syntax-ui";
 import { Button } from "@/components/ui/button";
+
 import { Separator } from "@/components/ui/separator";
+import { HueSettings } from "./hue-settings";
+
 
 export function SettingsView() {
   return <ProjectSettingsTabs />;
@@ -70,6 +73,16 @@ function ProjectSettingsTabs() {
                   <PlusIcon className="" />
                 </Button>
               </div> */}
+            </div>
+          ),
+        },
+
+        {
+          value: "hue-settings",
+          label: "Hue Bridge",
+          content: (
+            <div className="p-5">
+              <HueSettings />
             </div>
           ),
         },
