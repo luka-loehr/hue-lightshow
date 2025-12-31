@@ -219,7 +219,7 @@ export function LightsView() {
                             <div
                                 className={`
                                     aspect-square rounded-md border-2 transition-all cursor-pointer
-                                    flex flex-col items-center justify-center gap-1 p-2
+                                    flex flex-col items-center justify-center gap-2 p-2
                                     ${light.state.on 
                                         ? 'bg-yellow-400 border-yellow-500 text-yellow-950 shadow-[0_0_8px_rgba(250,204,21,0.4)]' 
                                         : 'bg-muted/50 border-border text-muted-foreground hover:bg-muted hover:border-border/80'
@@ -240,9 +240,9 @@ export function LightsView() {
                                 tabIndex={0}
                             >
                                 <Lightbulb 
-                                    className={`w-5 h-5 ${light.state.on ? 'text-yellow-950' : 'text-muted-foreground'}`}
+                                    className={`w-6 h-6 flex-shrink-0 ${light.state.on ? 'text-yellow-950' : 'text-muted-foreground'}`}
                                 />
-                                <span className="text-xs font-medium text-center leading-tight px-1 line-clamp-2">
+                                <span className="text-xs font-medium text-center w-full truncate px-1">
                                     {light.name}
                                 </span>
                             </div>
