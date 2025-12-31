@@ -25,6 +25,7 @@ export function LightsView() {
   const [discoveredBridges, setDiscoveredBridges] = useState<any[]>([]);
   const [isDiscovering, setIsDiscovering] = useState(false);
   const [hasAttemptedDiscovery, setHasAttemptedDiscovery] = useState(false);
+  const [waitingForButtonPress, setWaitingForButtonPress] = useState(false);
 
   useEffect(() => {
     loadSavedConnection();
@@ -40,8 +41,20 @@ export function LightsView() {
   };
 
   const handleConnect = async (bridge: any) => {
+    setWaitingForButtonPress(true);
     await connect(bridge);
   };
+
+  const handleConfirmButtonPressed = async () => {
+    await authenticate();
+  };
+
+  // Reset waiting state when authentication completes (success or failure)
+  useEffect(() => {
+    if (isAuthenticated) {
+      setWaitingForButtonPress(false);
+    }
+  }, [isAuthenticated]);
 
   const toggleLight = async (id: string, currentState: boolean) => {
     await setLightState(id, { on: !currentState });
@@ -76,7 +89,7 @@ export function LightsView() {
             </Button>
             {hasAttemptedDiscovery && discoveredBridges.length === 0 && (
                 <div className="p-3 text-sm text-center text-muted-foreground bg-muted/50 rounded-md border border-border">
-                    No Hue Bridges found. Try manual connection.
+                    No Hue Bridges found on your network.
                 </div>
             )}
         </div>
@@ -98,30 +111,77 @@ export function LightsView() {
     );
   }
 
-  if (!isAuthenticated) {
-      return (
-          <div className="h-full p-4 flex flex-col items-center justify-center text-center space-y-4">
-              <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center">
-                  <Lightbulb className="w-8 h-8 text-blue-500" />
-              </div>
-              <h2 className="text-xl font-bold">Link Bridge</h2>
-              <p className="text-sm text-muted-foreground max-w-[250px]">
-                  Press the large button on your Hue Bridge, then click Authenticate below.
-              </p>
-              {error && (
-                <div className="p-3 text-sm text-red-500 bg-red-500/10 rounded-md">
-                    {error}
-                </div>
-               )}
-              <Button onClick={authenticate} disabled={isAuthenticating}>
-                  {isAuthenticating && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
-                  Authenticate
-              </Button>
-              <Button variant="text" size="sm" onClick={disconnect}>
-                  Cancel
-              </Button>
+  // Show instruction screen when waiting for button press
+  if (waitingForButtonPress && !isAuthenticated) {
+    return (
+      <div className="h-full p-4 flex flex-col items-center justify-center text-center space-y-4">
+        <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center">
+          <Lightbulb className="w-8 h-8 text-blue-500" />
+        </div>
+        <h2 className="text-xl font-bold">Press the Bridge Button</h2>
+        <p className="text-sm text-muted-foreground max-w-[280px]">
+          Locate your Hue Bridge and press the large circular button on top of it. This will enable pairing mode.
+        </p>
+        {error && (
+          <div className="p-3 text-sm text-red-500 bg-red-500/10 rounded-md max-w-[280px]">
+            {error}
           </div>
-      )
+        )}
+        <div className="flex flex-col gap-2 w-full max-w-[280px]">
+          <Button 
+            onClick={handleConfirmButtonPressed} 
+            disabled={isAuthenticating}
+            className="w-full"
+          >
+            {isAuthenticating ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Connecting...
+              </>
+            ) : (
+              "I've Pressed the Button"
+            )}
+          </Button>
+          <Button 
+            variant="text" 
+            size="sm" 
+            onClick={() => {
+              setWaitingForButtonPress(false);
+              disconnect();
+            }}
+            disabled={isAuthenticating}
+          >
+            Cancel
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated && !waitingForButtonPress) {
+    return (
+      <div className="h-full p-4 flex flex-col items-center justify-center text-center space-y-4">
+        <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center">
+          <Lightbulb className="w-8 h-8 text-blue-500" />
+        </div>
+        <h2 className="text-xl font-bold">Link Bridge</h2>
+        <p className="text-sm text-muted-foreground max-w-[250px]">
+          Press the large button on your Hue Bridge, then click Authenticate below.
+        </p>
+        {error && (
+          <div className="p-3 text-sm text-red-500 bg-red-500/10 rounded-md">
+            {error}
+          </div>
+        )}
+        <Button onClick={authenticate} disabled={isAuthenticating}>
+          {isAuthenticating && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+          Authenticate
+        </Button>
+        <Button variant="text" size="sm" onClick={disconnect}>
+          Cancel
+        </Button>
+      </div>
+    );
   }
 
   return (

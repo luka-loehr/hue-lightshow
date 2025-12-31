@@ -26,10 +26,10 @@ export const useHueStore = create<HueStore>((set, get) => ({
   error: null,
 
   connect: async (bridge) => {
-    set({ bridge, error: null });
-    // If we have a username already, check connection
+    set({ bridge, error: null, isConnected: true });
+    // If we have a username already, authenticate immediately
     if (bridge.username) {
-        set({ isConnected: true, isAuthenticated: true });
+        set({ isAuthenticated: true });
         await get().fetchLights();
     }
   },
@@ -38,16 +38,28 @@ export const useHueStore = create<HueStore>((set, get) => ({
     const { bridge } = get();
     if (!bridge) return;
 
+    set({ isAuthenticating: true, error: null });
     try {
       const username = await HueService.authenticate(bridge.internalipaddress);
       if (username) {
         const updatedBridge = { ...bridge, username };
-        set({ bridge: updatedBridge, isAuthenticated: true, isConnected: true, error: null });
+        set({ 
+          bridge: updatedBridge, 
+          isAuthenticated: true, 
+          isConnected: true, 
+          isAuthenticating: false,
+          error: null 
+        });
         HueService.saveConfig(updatedBridge);
         await get().fetchLights();
+      } else {
+        set({ isAuthenticating: false, error: "Authentication failed. Please try again." });
       }
     } catch (e: any) {
-      set({ error: e.message || "Authentication failed" });
+      set({ 
+        isAuthenticating: false, 
+        error: e.message || "Authentication failed. Make sure you pressed the button on the bridge." 
+      });
     }
   },
 
