@@ -20,6 +20,11 @@ export const TRACK_COLORS: Record<
     background: "bg-[#915DBE]",
     border: "",
   },
+  light: {
+    solid: "bg-yellow-500",
+    background: "bg-yellow-500/80",
+    border: "",
+  },
 } as const;
 
 // Utility functions
@@ -37,6 +42,7 @@ export const TRACK_HEIGHTS: Record<TrackType, number> = {
   media: 60,
   text: 25,
   audio: 50,
+  light: 30,
 } as const;
 
 // Utility function for track heights
