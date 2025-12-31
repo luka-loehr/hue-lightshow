@@ -215,6 +215,7 @@ export function LightsView() {
                         containerClassName="w-full"
                         className="p-0 border-0"
                         showPlusOnDrag={true}
+                        showLabel={false}
                         preview={
                             <div
                                 className={`
