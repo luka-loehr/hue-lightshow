@@ -7,6 +7,7 @@ import {
   TextElement,
   DragData,
   MediaElement,
+  LightItemDragData,
   sortTracksByOrder,
   ensureMainTrack,
   validateElementTrackCompatibility,
@@ -1436,6 +1437,24 @@ export const useTimelineStore = create<TimelineStore>((set, get) => {
           targetTrackId,
           buildTextElement(item as TextElement | DragData, 0)
         );
+        return true;
+      }
+
+      if (item.type === "light") {
+        // Handle light elements
+        const lightData = item as LightItemDragData;
+        const targetTrackId = get().insertTrackAt("light", get().tracks.length);
+        get().addElementToTrack(targetTrackId, {
+          type: "light",
+          name: lightData.name,
+          lightId: lightData.id,
+          color: lightData.color || '#fbbf24',
+          brightness: lightData.brightness || 254,
+          duration: 5,
+          startTime: 0,
+          trimStart: 0,
+          trimEnd: 0,
+        });
         return true;
       }
 

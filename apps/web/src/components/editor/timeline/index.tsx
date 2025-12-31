@@ -461,6 +461,9 @@ export function Timeline() {
         if (dragData.type === "text") {
           // Always create new text track to avoid overlaps
           addElementToNewTrack(dragData);
+        } else if (dragData.type === "light") {
+          // Handle light items
+          addElementToNewTrack(dragData);
         } else {
           // Handle media items
           const mediaItem = mediaFiles.find(

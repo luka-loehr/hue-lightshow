@@ -932,6 +932,80 @@ export function TimelineTrackContent({
             content: dragData.content || DEFAULT_TEXT_ELEMENT.content,
             startTime: textSnappedTime,
           });
+        } else if (dragData.type === "light") {
+          // Handle light items
+          let targetTrackId = track.id;
+          let targetTrack = track;
+
+          // Handle position-aware track creation for lights
+          if (track.type !== "light" || dropPosition !== "on") {
+            const mainTrack = getMainTrack(tracks);
+            let insertIndex: number;
+
+            if (dropPosition === "above") {
+              insertIndex = currentTrackIndex;
+            } else if (dropPosition === "below") {
+              insertIndex = currentTrackIndex + 1;
+            } else {
+              // Insert below main track for lights
+              if (mainTrack) {
+                const mainTrackIndex = tracks.findIndex(
+                  (t) => t.id === mainTrack.id
+                );
+                insertIndex = mainTrackIndex + 1;
+              } else {
+                insertIndex = tracks.length;
+              }
+            }
+
+            targetTrackId = insertTrackAt("light", insertIndex);
+            const updatedTracks = useTimelineStore.getState().tracks;
+            const newTargetTrack = updatedTracks.find(
+              (t) => t.id === targetTrackId
+            );
+            if (!newTargetTrack) return;
+            targetTrack = newTargetTrack;
+          }
+
+          // Check for overlaps with existing elements in target track
+          const newElementDuration = 5; // Default light duration
+          const lightSnappedTime = getDropSnappedTime(
+            newStartTime,
+            newElementDuration
+          );
+          const newElementEnd = lightSnappedTime + newElementDuration;
+
+          const hasOverlap = targetTrack.elements.some((existingElement) => {
+            const existingStart = existingElement.startTime;
+            const existingEnd =
+              existingElement.startTime +
+              (existingElement.duration -
+                existingElement.trimStart -
+                existingElement.trimEnd);
+
+            return (
+              lightSnappedTime < existingEnd && newElementEnd > existingStart
+            );
+          });
+
+          if (hasOverlap) {
+            toast.error(
+              "Cannot place element here - it would overlap with existing elements"
+            );
+            return;
+          }
+
+          addElementToTrack(targetTrackId, {
+            type: "light",
+            name: dragData.name,
+            lightId: dragData.id,
+            color: dragData.color || '#fbbf24',
+            brightness: dragData.brightness || 254,
+            duration: newElementDuration,
+            startTime: lightSnappedTime,
+            trimStart: 0,
+            trimEnd: 0,
+          });
         } else {
           // Handle media items
           const mediaItem = mediaFiles.find((item) => item.id === dragData.id);
