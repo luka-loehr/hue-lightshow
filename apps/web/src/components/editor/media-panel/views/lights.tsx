@@ -200,60 +200,60 @@ export function LightsView() {
         <div className="flex-1 overflow-y-auto p-3">
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {lights.map(light => (
-                    <DraggableMediaItem
-                        key={light.id}
-                        name={light.name}
-                        variant="card"
-                        isDraggable={true}
-                        dragData={{
-                            id: light.id,
-                            type: "light",
-                            name: light.name,
-                            color: light.state.on ? '#fbbf24' : '#71717a',
-                            brightness: light.state.bri,
-                        } as LightItemDragData}
-                        containerClassName="w-full"
-                        className="p-0 border-0"
-                        showPlusOnDrag={true}
-                        showLabel={false}
-                        preview={
-                            <div
-                                className={`
-                                    aspect-square rounded-md border-2 transition-all cursor-pointer
-                                    relative flex flex-col items-center justify-center p-2
-                                    ${light.state.on 
-                                        ? 'bg-yellow-400 border-yellow-500 text-yellow-950 shadow-[0_0_8px_rgba(250,204,21,0.4)]' 
-                                        : 'bg-muted/50 border-border text-muted-foreground hover:bg-muted hover:border-border/80'
-                                    }
-                                `}
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    toggleLight(light.id, light.state.on);
-                                }}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter' || e.key === ' ') {
+                    <div key={light.id} className="flex flex-col gap-1">
+                        <DraggableMediaItem
+                            name={light.name}
+                            variant="card"
+                            isDraggable={true}
+                            aspectRatio={1}
+                            dragData={{
+                                id: light.id,
+                                type: "light",
+                                name: light.name,
+                                color: light.state.on ? '#fbbf24' : '#71717a',
+                                brightness: light.state.bri,
+                            } as LightItemDragData}
+                            containerClassName="w-full"
+                            className="p-0 border-0"
+                            showPlusOnDrag={true}
+                            showLabel={false}
+                            preview={
+                                <div
+                                    className={`
+                                        w-full h-full rounded-md border-2 transition-all cursor-pointer
+                                        flex items-center justify-center
+                                        ${light.state.on 
+                                            ? 'bg-yellow-400 border-yellow-500 shadow-[0_0_8px_rgba(250,204,21,0.4)]' 
+                                            : 'bg-muted/50 border-border hover:bg-muted hover:border-border/80'
+                                        }
+                                    `}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
                                         e.preventDefault();
                                         toggleLight(light.id, light.state.on);
-                                    }
-                                }}
-                                role="button"
-                                tabIndex={0}
-                            >
-                                <div className="flex flex-col items-center justify-center gap-2 flex-1">
+                                    }}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            toggleLight(light.id, light.state.on);
+                                        }
+                                    }}
+                                    role="button"
+                                    tabIndex={0}
+                                >
                                     <Lightbulb 
-                                        className={`w-6 h-6 flex-shrink-0 ${light.state.on ? 'text-yellow-950' : 'text-muted-foreground'}`}
+                                        className={`w-6 h-6 ${light.state.on ? 'text-yellow-950' : 'text-muted-foreground'}`}
                                     />
-                                    <span 
-                                        className="text-xs font-medium text-center w-full overflow-hidden text-ellipsis whitespace-nowrap px-1"
-                                        style={{ maxWidth: '100%' }}
-                                    >
-                                        {light.name}
-                                    </span>
                                 </div>
-                            </div>
-                        }
-                    />
+                            }
+                        />
+                        <span 
+                            className="text-xs text-muted-foreground truncate w-full px-0.5"
+                            title={light.name}
+                        >
+                            {light.name}
+                        </span>
+                    </div>
                 ))}
             </div>
             {lights.length === 0 && (
