@@ -197,56 +197,59 @@ export function LightsView() {
                 </Button>
             </div>
         </div>
-        <div className="flex-1 overflow-y-auto p-2 space-y-2">
-            {lights.map(light => (
-                <DraggableMediaItem
-                    key={light.id}
-                    name={light.name}
-                    variant="card"
-                    isDraggable={true}
-                    dragData={{
-                        id: light.id,
-                        type: "light",
-                        name: light.name,
-                        color: light.state.on ? '#fbbf24' : '#71717a', // yellow-400 or zinc-500
-                        brightness: light.state.bri,
-                    } as LightItemDragData}
-                    containerClassName="w-full h-auto"
-                    className="p-0 border-0"
-                    showPlusOnDrag={true}
-                    preview={
-                        <Card className="p-3 transition-colors hover:bg-accent/50 w-full">
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                                <div 
-                                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${light.state.on ? 'bg-yellow-400 text-yellow-950 shadow-[0_0_10px_rgba(250,204,21,0.5)]' : 'bg-muted text-muted-foreground'}`}
-                                >
-                                    <Lightbulb className="w-4 h-4" />
-                                </div>
-                                <div className="flex flex-col items-start">
-                                    <span className="text-sm font-medium">{light.name}</span>
-                                    <span className="text-xs text-muted-foreground">
-                                        {light.state.on ? `${Math.round((light.state.bri / 254) * 100)}% Brightness` : 'Off'}
-                                    </span>
-                                </div>
-                            </div>
-                            <Button 
-                                variant={light.state.on ? "default" : "outline"} 
-                                size="sm"
-                                className={light.state.on ? "bg-yellow-500 hover:bg-yellow-600 text-black border-yellow-600" : ""}
+        <div className="flex-1 overflow-y-auto p-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {lights.map(light => (
+                    <DraggableMediaItem
+                        key={light.id}
+                        name={light.name}
+                        variant="card"
+                        isDraggable={true}
+                        dragData={{
+                            id: light.id,
+                            type: "light",
+                            name: light.name,
+                            color: light.state.on ? '#fbbf24' : '#71717a',
+                            brightness: light.state.bri,
+                        } as LightItemDragData}
+                        containerClassName="w-full"
+                        className="p-0 border-0"
+                        showPlusOnDrag={true}
+                        preview={
+                            <div
+                                className={`
+                                    aspect-square rounded-md border-2 transition-all cursor-pointer
+                                    flex flex-col items-center justify-center gap-1 p-2
+                                    ${light.state.on 
+                                        ? 'bg-yellow-400 border-yellow-500 text-yellow-950 shadow-[0_0_8px_rgba(250,204,21,0.4)]' 
+                                        : 'bg-muted/50 border-border text-muted-foreground hover:bg-muted hover:border-border/80'
+                                    }
+                                `}
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     e.preventDefault();
                                     toggleLight(light.id, light.state.on);
                                 }}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        toggleLight(light.id, light.state.on);
+                                    }
+                                }}
+                                role="button"
+                                tabIndex={0}
                             >
-                                {light.state.on ? "On" : "Off"}
-                            </Button>
-                        </div>
-                    </Card>
-                    }
-                />
-            ))}
+                                <Lightbulb 
+                                    className={`w-5 h-5 ${light.state.on ? 'text-yellow-950' : 'text-muted-foreground'}`}
+                                />
+                                <span className="text-xs font-medium text-center leading-tight px-1 line-clamp-2">
+                                    {light.name}
+                                </span>
+                            </div>
+                        }
+                    />
+                ))}
+            </div>
             {lights.length === 0 && (
                 <div className="p-8 text-center text-muted-foreground">
                     No lights found. Check your Hue app.
