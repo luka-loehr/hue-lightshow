@@ -851,7 +851,7 @@ export function Timeline() {
                 }}
               >
                 {tracks.length === 0 ? (
-                  <div />
+                  <TimelineEmptyState />
                 ) : (
                   <>
                     {tracks.map((track, index) => (
@@ -908,6 +908,67 @@ export function Timeline() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function TimelineEmptyState() {
+  // Ghost placeholder tracks showing where users can drag elements
+  const ghostTracks = [
+    {
+      type: "text" as const,
+      label: "Drop text here",
+      icon: TypeIcon,
+      color: "border-[#5DBAA0]/40",
+      bgHover: "hover:bg-[#5DBAA0]/5",
+    },
+    {
+      type: "media" as const,
+      label: "Drop media here",
+      icon: Video,
+      color: "border-blue-500/40",
+      bgHover: "hover:bg-blue-500/5",
+    },
+    {
+      type: "audio" as const,
+      label: "Drop audio here",
+      icon: Music,
+      color: "border-purple-500/40",
+      bgHover: "hover:bg-purple-500/5",
+    },
+    {
+      type: "light" as const,
+      label: "Drop lights here",
+      icon: Lightbulb,
+      color: "border-yellow-500/40",
+      bgHover: "hover:bg-yellow-500/5",
+    },
+  ];
+
+  return (
+    <div className="flex flex-col gap-1 p-2 w-full">
+      {ghostTracks.map((ghost, index) => {
+        const Icon = ghost.icon;
+        const height = getTrackHeight(ghost.type);
+
+        return (
+          <div
+            key={ghost.type}
+            className={`
+              w-full rounded-md border-2 border-dashed transition-all duration-200
+              flex items-center gap-3 px-4
+              ${ghost.color} ${ghost.bgHover}
+              opacity-60 hover:opacity-100
+            `}
+            style={{ height: `${height}px` }}
+          >
+            <Icon className="w-4 h-4 text-muted-foreground/60" />
+            <span className="text-xs text-muted-foreground/60 select-none">
+              {ghost.label}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 }
