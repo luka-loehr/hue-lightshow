@@ -33,10 +33,12 @@ export class LightingEngine {
         // Collect all lights that *should* be controlled by the timeline
         // We scan all light tracks
         tracks.filter(t => t.type === 'light').forEach(track => {
-            // Find element active at currentTime
-            const element = track.elements.find(
-                e => currentTime >= e.startTime && currentTime < e.startTime + e.duration
-            ) as LightElement | undefined;
+            // Find element active at currentTime (accounting for trimStart and trimEnd)
+            const element = track.elements.find((e) => {
+                const elementStart = e.startTime;
+                const elementEnd = e.startTime + (e.duration - e.trimStart - e.trimEnd);
+                return currentTime >= elementStart && currentTime < elementEnd;
+            }) as LightElement | undefined;
 
             if (element) {
                 const xy = this.hexToXY(element.color);
